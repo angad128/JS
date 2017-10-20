@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Google Map</title>
+
+	<style>
+		#map{
+			height: 600px;
+			width: 85%;
+			margin-left: 150px;
+		}
+	</style>
+</head>
+<body>
+
+	<h1>My Google Map</h1>
+	<div id="map"></div>
+
+	<script>
+		function initMap() {
+			// map otions
+			var options = {
+				zoom: 8,
+				center:{lat: 27.7172 ,lng: 85.3240}
+			}
+
+			// new map
+			var map = new google.maps.Map(document.getElementById('map'),options);
+			/*
+			// Add marker
+			var marker = new google.maps.Marker({
+				position: {lat: 27.7172 ,lng: 85.3240},
+				map:map,
+				icon:'https:developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+
+			});
+
+			// info window
+			var infoWindow = new google.maps.InfoWindow({
+				content:'<h1>Kathmandu City</h1>'
+			});
+
+			//action listener
+			marker.addListener('click', function() {
+				infoWindow.open(map, marker)
+			});
+			*/
+			addMarker({
+				coords:{lat: 27.7172 ,lng: 85.3240},
+				iconImage:'https:developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+				content:'<h1>Kathmandu City</h1>'
+			});
+			addMarker({coords:{lat: 28.2380 ,lng: 83.9956}});
+			addMarker({coords:{lat: 26.7944 ,lng: 87.2817}});
+
+			// Add marker function 
+			function addMarker(props) {
+				var marker = new google.maps.Marker({
+					position: props.coords,
+					map:map,
+					//icon: props.iconImage
+				});	
+				//check for coustomicon
+				if(props.iconImage){
+					// set icon image
+					marker.setIcon(props.iconImage);
+				}
+				//check for coustom content
+				if(props.content){
+					var infoWindow = new google.maps.InfoWindow({
+						content: props.content
+					});
+					marker.addListener('click', function() {
+						infoWindow.open(map, marker)
+					});
+				}
+			}
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxcCve4o46_E4Hn-sE_gcRc_kbCC26hsI&callback=initMap"
+    async defer></script>
+</body>
+</html>

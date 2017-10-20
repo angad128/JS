@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		function checkAll(parent, field)
+		{
+		    var children = document.getElementsByName(field);
+		    var newValue = parent.checked;
+		    for (i = 0; i < children.length; i++){
+		        children[i].checked = newValue;
+		    }
+		}
+</script>
+</head>
+<body>
+	<div class ="county-select">
+	  <div><label for="franklin">Check All</label><input name="county[]" value="franklin" type="checkbox" class="noBorderIE" onChange="checkAll(this, 'townF[]')" />
+	  </div>
+	  
+</div>
+<div class="town-select">
+    <div id="Franklin-county">
+    <label for="avon">Avon</label><input name="townF[]" value="avon" type="checkbox" class="noBorderIE" /><br/>
+    <label for="CV">Carrabassett Valley</label><input name="townF[]" value="carrabassett valley" type="checkbox" class="noBorderIE" /><br/>
+    <label for="carthage">Carthage</label><input name="townF[]" value="carthage" type="checkbox" class="noBorderIE" /><br/>
+    <label for="chesterville">Chesterville</label><input name="townF[]" value="chesterville" type="checkbox" class="noBorderIE" /><br/>
+    <label for="CP">Coplin Plantation</label><input name="townF[]" value="coplin plantation" type="checkbox" class="noBorderIE" /><br/>
+    <label for="DP">Dallas Plantation</label><input name="townF[]" value="dallas plantation" type="checkbox" class="noBorderIE" /><br/>
+    <label for="eustis">Eustis</label><input name="townF[]" value="eustis" type="checkbox" class="noBorderIE" /><br/>
+  </div>
+</div>
+</body>
+</html>
